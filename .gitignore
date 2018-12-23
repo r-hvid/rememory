@@ -1,0 +1,8 @@
+app.db
+.env
+.flaskenv
+virtual_env/
+.DS_Store
+.idea/
+__pycache__/
+

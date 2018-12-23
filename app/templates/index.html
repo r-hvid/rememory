@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="list row">
+    {% for category in categories %}
+        <div class="list-item col-4">
+            <div class="title">
+                <h1><a href="{{ url_for('main.category', id=category.id) }}">{{ category.title }}</a></h1>
+            </div>
+            <div class="description">
+                <p>{{ category.description }}</p>
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+    <div class="add-category add-box">
+        <h3>Add new category</h3>
+        <form class="form-group" action="" method="post">
+            {{ add_category_form.hidden_tag() }}
+            <div class="form-group">
+                {{ add_category_form.title.label }}
+                {{ add_category_form.title(class="form-control") }}
+                {% for error in add_category_form.title.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </div>
+            <div class="form-group">
+                {{ add_category_form.description.label }}
+                {{ add_category_form.description(class="form-control") }}
+                {% for error in add_category_form.description.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </div>
+            <div>{{ add_category_form.submit(class="btn btn-outline-success") }}</div>
+        </form>
+    </div>
+{% endblock %}

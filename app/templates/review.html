@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="review-list">
+    <h1>Review list</h1>
+    <p>This is your review list. Please take some time to review the topics.</p>
+    {% for topic in topics %}
+        <div class="review-item">
+            <p>Overdue indicator: <b>{{ topic.waiting_progress }}</b></p>
+            <h3><a href="{{ url_for('main.review_topic', id=topic.id) }}">{{ topic.title }}</a></h3>
+        </div>
+    {% endfor %}
+    </div>
+
+{% endblock %}

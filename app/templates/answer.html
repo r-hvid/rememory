@@ -1,0 +1,32 @@
+{% extend 'index.html' %}
+
+{%  block content %}
+    <div class="add-box rating">
+        <h3>Rate your answer [0;1]</h3>
+        <form class="form-group" action="" method="post">
+            {{ answer_form.hidden_tag() }}
+            <div class="form-group">
+                {{ answer_form.performance_rating.label }}
+                {{ answer_form.performance_rating(class="form-control") }}
+                {% for error in answer_form.performance_rating.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </div>
+            <div>{{ answer_form.submit(class="btn btn-outline-success") }}</div>
+        </form>
+    </div>
+
+    <div class="topic">
+        <h1>{{ answer.topic.title }}</h1>
+    </div>
+
+    <div class="answer-vs-body">
+        <div class="body">
+            {{ answer.topic.body_html|safe }}
+        </div>
+        <div class="answer">
+            {{ answer.body_html|safe }}
+        </div>
+    </div>
+
+{% endblock %}
